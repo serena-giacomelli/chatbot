@@ -1,0 +1,18 @@
+[
+  {
+    "question": "Cuales son los horarios de atencion",
+    "answer": "Nuestro horario de atencion es de lunes a viernes de 9:00 a 18:00."
+  },
+  {
+    "question": "Como puedo pagar",
+    "answer": "Aceptamos transferencia bancaria, tarjeta de credito y debito."
+  },
+  {
+    "question": "Hacen envios",
+    "answer": "Si, hacemos envios a todo el pais. El costo depende de la zona."
+  },
+  {
+    "question": "Donde estan ubicados",
+    "answer": "Estamos ubicados en el centro de la ciudad. Si quieres te comparto la direccion exacta."
+  }
+]
