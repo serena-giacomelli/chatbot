@@ -484,6 +484,10 @@ async def whatsapp_webhook(request: Request) -> Response:
 
     history_service.save_message(phone, "in", user_text, "user")
 
+    response_text = f"{_build_menu_intro()}\n\n{faq_service.build_menu()}"
+    history_service.save_message(phone, "out", response_text, "faq_menu")
+    return Response(content=to_twiml(response_text), media_type="application/xml")
+
     normalized_text = user_text.lower()
 
     if normalized_text in {"hola", "buenas", "buen dia", "buenas tardes", "buenas noches"}:
