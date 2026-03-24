@@ -90,6 +90,19 @@ Comandos de control del cliente:
 - Activar `ENABLE_TWILIO_SIGNATURE_VALIDATION=true`
 - Configurar URL publica en Twilio
 
+### Render (paso a paso)
+
+1. En Render, elegir **New +** -> **Blueprint**.
+2. Conectar el repositorio de GitHub de este proyecto.
+3. Render detecta `render.yaml` y crea el servicio web automaticamente.
+4. En el servicio creado, abrir **Environment** y completar los valores `sync: false`.
+5. Hacer deploy y esperar a que termine el build.
+6. Probar la URL publica en `/health`.
+7. En Twilio, actualizar `WHEN A MESSAGE COMES IN` con:
+    - `https://TU-SERVICIO-RENDER.onrender.com/webhook/whatsapp`
+    - Metodo `HTTP POST`
+8. Probar WhatsApp de nuevo con `hola` y una opcion numerica del menu.
+
 ## 9. Respuesta humana por Twilio (handoff)
 
 Cuando un caso escala, puedes responder como asesor con este endpoint:

@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: chatbot-whatsapp-twilio
+    runtime: python
+    plan: free
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: LOG_LEVEL
+        value: INFO
+      - key: DB_PATH
+        value: chatbot.db
+      - key: GEMINI_MODEL
+        value: gemini-1.5-flash
+      - key: FAQ_MATCH_THRESHOLD
+        value: "0.78"
+      - key: FAQ_MIN_SIMILARITY_FOR_GEMINI
+        value: "0.35"
+      - key: ENABLE_TWILIO_SIGNATURE_VALIDATION
+        value: "true"
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_WHATSAPP_FROM
+        sync: false
+      - key: PUBLIC_WHATSAPP_NUMBER
+        sync: false
+      - key: ADMIN_API_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: COMPANY_NAME
+        sync: false
+      - key: HUMAN_NOTIFICATION_WEBHOOK
+        sync: false
