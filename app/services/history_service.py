@@ -129,3 +129,18 @@ class HistoryService:
                 messages = [dict(row) for row in rows]
                 messages.reverse()
                 return messages
+
+    def get_incoming_count(self, phone: str) -> int:
+        with self._lock:
+            with self._connect() as conn:
+                row = conn.execute(
+                    """
+                    SELECT COUNT(1) AS total
+                    FROM messages
+                    WHERE phone = ? AND direction = 'in'
+                    """,
+                    (phone,),
+                ).fetchone()
+                if row is None:
+                    return 0
+                return int(row["total"])
